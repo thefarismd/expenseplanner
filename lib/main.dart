@@ -65,7 +65,7 @@ class MyHomePage extends StatelessWidget {
                               )),
                               margin: EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 15),
-                              child: Text(transaction.amount.toString(),
+                              child: Text('\$${transaction.amount}',
                                   style: TextStyle(
                                       color: Colors.purple,
                                       fontSize: 20,
