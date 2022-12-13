@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   // const MyWidget({Key key}) : super(key: key);
 
   final Function addTxHandler;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTransaction(this.addTxHandler);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -17,7 +24,9 @@ class NewTransaction extends StatelessWidget {
       return;
     }
 
-    addTxHandler(enteredTitle, enteredAmount);
+    widget.addTxHandler(enteredTitle, enteredAmount);
+
+    Navigator.of(context).pop(); //to remove keyboard after entering data.
   }
 
   @override
