@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+      ), //accentColor deprecated
       home: MyHomePage(),
     );
   }
@@ -63,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Personal Expenses'),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
       ),
       body: SingleChildScrollView(
@@ -78,10 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('CHART!'),
                 elevation: 5,
               ),
-            ),
-            Card(
-              color: Colors.red,
-              child: Text('LIST OF TX'),
             ),
             TransactionList(_userTransactions),
           ],
