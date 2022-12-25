@@ -18,12 +18,13 @@ class TransactionList extends StatelessWidget {
   // ];
 
   final List<Transaction> transactions;
-  TransactionList(this.transactions);
+  final Function deleteTx;
+  TransactionList(this.transactions, this.deleteTx);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 700,
       child: transactions.isEmpty
           ? Column(
               children: [
@@ -49,6 +50,13 @@ class TransactionList extends StatelessWidget {
                   elevation: 5,
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                   child: ListTile(
+                    trailing: IconButton(
+                      onPressed: (() => deleteTx(transactions[index].id)),
+                      icon: Icon(
+                        Icons.delete,
+                        color: Theme.of(context).errorColor,
+                      ),
+                    ),
                     subtitle: Text(
                         DateFormat.yMMMd().format(transactions[index].date)),
                     title: Text(
